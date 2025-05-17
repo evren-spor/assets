@@ -11,26 +11,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function calculatePrice() {
     if (!quantitySlider || !fabricSelect || !setSelect || !unitPrice || !totalPrice) return;
+
     const quantity = parseInt(quantitySlider.value);
     const fabricMultiplier = parseFloat(fabricSelect.value);
     const setMultiplier = parseFloat(setSelect.value);
+
     let basePrice = 299;
     let extraFee = 0;
     optionCheckboxes.forEach(opt => {
       if (opt.checked && opt.nextSibling.textContent.includes("Sponsor")) extraFee += 25;
     });
+
     const discountedUnit = basePrice * fabricMultiplier * setMultiplier + extraFee;
     const total = quantity * discountedUnit;
-    unitPrice.textContent = Math.round(discountedUnit);
-    totalPrice.textContent = Math.round(total);
+
+    if (unitPrice) unitPrice.textContent = Math.round(discountedUnit);
+    if (totalPrice) totalPrice.textContent = Math.round(total);
   }
 
   if (quantitySlider) {
     quantitySlider.addEventListener('input', () => {
-      quantityValue.textContent = quantitySlider.value;
+      if (quantityValue) quantityValue.textContent = quantitySlider.value;
       calculatePrice();
     });
   }
+
   if (fabricSelect) fabricSelect.addEventListener('change', calculatePrice);
   if (setSelect) setSelect.addEventListener('change', calculatePrice);
   if (optionCheckboxes.length) optionCheckboxes.forEach(cb => cb.addEventListener('change', calculatePrice));
@@ -68,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
     faqQuestions.forEach(q => {
       q.addEventListener('click', () => {
         const answer = q.nextElementSibling;
-        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        if (answer) {
+          answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
       });
     });
   }
