@@ -1,0 +1,78 @@
+/* Evrenspor Ortak Stil Dosyası - style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --primary-color: #002d72;
+  --secondary-color: #e2001a;
+  --accent-color: #f5a623;
+  --text-color: #333333;
+  --light-text: #666666;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --border-radius: 8px;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
+  --transition: all 0.3s ease;
+  --mobile-padding: 15px;
+  --tablet-padding: 25px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  margin-bottom: var(--spacing-xl);
+  background: var(--card-bg);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+/* Eklenen özel sınıflar dosyanın ilerleyen bölümlerinde ayrı ayrı tanımlanacak */
+/* örneğin: .feature-grid, .component-item, .process-steps, .timeline-step, .calculator-container */
+
+/* Mobil uyum */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: var(--mobile-padding);
+  }
+  .section-title {
+    font-size: 22px;
+  }
+}
