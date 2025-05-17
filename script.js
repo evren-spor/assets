@@ -1,7 +1,4 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-
-  // === Fiyat Hesaplayıcı ===
   const quantitySlider = document.getElementById('quantitySlider');
   const quantityValue = document.getElementById('quantityValue');
   const fabricSelect = document.getElementById('fabricSelect');
@@ -15,16 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const quantity = parseInt(quantitySlider.value);
       const fabricMultiplier = parseFloat(fabricSelect.value);
       const setMultiplier = parseFloat(setSelect.value);
-
       let basePrice = 299;
       let extraFee = 0;
       optionCheckboxes.forEach(opt => {
         if (opt.checked && opt.nextSibling.textContent.includes("Sponsor")) extraFee += 25;
       });
-
       const discountedUnit = basePrice * fabricMultiplier * setMultiplier + extraFee;
       const total = quantity * discountedUnit;
-
       unitPrice.textContent = Math.round(discountedUnit);
       totalPrice.textContent = Math.round(total);
     }
@@ -33,14 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (quantityValue) quantityValue.textContent = quantitySlider.value;
       calculatePrice();
     });
-
     fabricSelect.addEventListener('change', calculatePrice);
     setSelect.addEventListener('change', calculatePrice);
     optionCheckboxes.forEach(cb => cb.addEventListener('change', calculatePrice));
     calculatePrice();
   }
 
-  // === Forma Tasarımı SVG ===
   const formColor = document.getElementById('formColor');
   const playerNumber = document.getElementById('playerNumber');
   const playerName = document.getElementById('playerName');
@@ -66,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // === SSS Toggle ===
   const faqQuestions = document.querySelectorAll('.faq-question');
   if (faqQuestions.length) {
     faqQuestions.forEach(q => {
